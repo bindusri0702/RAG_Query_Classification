@@ -1,0 +1,9 @@
+fastapi
+pydantic
+uvicorn
+fitz  # PyMuPDF
+requests
+gradio
+groq
+nltk
+sumy
