@@ -6,17 +6,20 @@
 ## Features
 - **Query Classification**: Determines the necessity of vector search.
 - **PDF Reading**: Extracts text from uploaded PDF files.
-- **Vector Search**: Performs similarity search on documents.
-- **Clarify Doubts**: Handles user queries by clarifying doubts based on document content.
-- **General Query Handling**: Processes general user queries.
-- **Text-to-Speech Integration**: Converts responses to audio using Sarvam.ai API.
+- **Smart Actions** -
+    - **Vector Search**: Performs similarity search on documents.
+    - **Clarify Doubts**: Handles user queries by clarifying doubts based on document content with knowledge of chat history.
+    - **General Query Handling**: Processes general user queries.
+    - **Calculator**: Evaluates mathematical expression.
+    - **Dictionary**: Get the meaning of words.
+- **Text-to-Speech Integration**: Converts responses to audio using Sarvam.ai Text-to-Speech API.
 - **Gradio Interface**: Provides a user-friendly interface for interaction.
 
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/RAG_APP.git
-    cd RAG_APP
+    git clone https://github.com/bindusri0702/sarvamai_RAG.git
+    cd sarvamai_RAG
     ```
 
 2. Install the required dependencies:
@@ -26,7 +29,7 @@
 
 3. Run the application:
     ```bash
-    uvicorn app:app --host 0.0.0.0 --port 8000
+    uvicorn rag_app:app --reload
     ```
 
 ## API Endpoints
@@ -36,6 +39,7 @@
 - **`POST /vector_search`**: Performs vector search on the documents.
 - **`POST /clarify_doubts`**: Clarifies doubts based on document content.
 - **`POST /general_query`**: Handles general user queries.
+    - *`Calculate`* and *`Dictionary`* are included inside general query enpoints.
 
 ## Gradio Interface
 The application includes a Gradio interface for easy interaction:
@@ -49,14 +53,3 @@ The application includes a Gradio interface for easy interaction:
 2. Enter your query and upload a PDF file.
 3. Receive the response in text and audio formats.
 
-## Example
-```python
-import requests
-
-url = "http://localhost:8000/vector_search"
-data = {
-    "query": "What is the capital of France?",
-    "documents": "Paris is the capital city of France."
-}
-response = requests.post(url, json=data)
-print(response.json())
